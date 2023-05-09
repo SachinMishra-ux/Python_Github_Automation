@@ -26,6 +26,11 @@ jobs:
         env:
           SOME_SECRET: ${{ secrets.SOME_SECRET }}
         run: python main.py
+        
+      - name: Authenticate with SSH key
+        uses: webfactory/ssh-agent@v0.5.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           
       - name: commit files
         run: |
@@ -37,5 +42,5 @@ jobs:
       - name: push changes
         uses: ad-m/github-push-action@v0.6.0
         with:
-          github_token: ${{ secrets.MY_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: main 
