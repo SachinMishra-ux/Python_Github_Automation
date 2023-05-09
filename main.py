@@ -2,7 +2,9 @@ import logging
 import logging.handlers
 import os
 
+import re
 import requests
+from bs4 import BeautifulSoup
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -27,8 +29,11 @@ except KeyError:
 if __name__ == "__main__":
     logger.info(f"Token value: {SOME_SECRET}")
 
-    r = requests.get('https://weather.talkpython.fm/api/weather/?city=Berlin&country=DE')
-    if r.status_code == 200:
-        data = r.json()
-        temperature = data["forecast"]["temp"]
-        logger.info(f'Weather in Berlin: {temperature}')
+    firebolt = requests.get('https://www.fireboltt.com/products/king?variant=42334775640255')
+    if firebolt.status_code == 200:
+        soup= BeautifulSoup(firebolt.content,'html.parser')
+        content = soup.find_all(class_='money')
+        content = str(content)
+        re_prices = '(₹.*?)<\/span>'
+        price_list = re.findall(re_prices, content)
+        logger.info(f"Today's price: {price_list[0]}")
