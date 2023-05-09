@@ -1,6 +1,10 @@
 That error means you are using wrong credential or wrong repo:
+- Permission to SachinMishra-ux/Python_Github_Automation.git denied to github-actions[bot].
 
-Username needs to be the user, not the email
-Ensure you provide the proper password. If you have 2FA enabled on GitHub, you need to make sure you create an Access Token with proper access permissions and use the token as password instead.
-Repo format is: https://github.com/<user>/<repo>.git
-403 means GitHub is not granting you access so one or more of the 3 things above are the problem
+- Username needs to be the user, not the email
+- Ensure you provide the proper password. If you have 2FA enabled on GitHub, you need to make sure you create an Access Token with proper access permissions and use the token as password instead.
+- Repo format is: https://github.com/<user>/<repo>.git
+- 403 means GitHub is not granting you access so one or more of the 3 things above are the problem
+
+- MySolution
+- Since I have enabled 2FA, I need to create access token with proper access permissions and use token as password.
